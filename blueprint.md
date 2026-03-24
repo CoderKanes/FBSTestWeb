@@ -8,10 +8,12 @@ A modern, responsive Lotto number generator built with framework-less web standa
 - **Typography**: Clear, expressive headlines and numbers.
 - **Components**: Custom Web Component `<lotto-ball>` for displaying individual numbers.
 - **Interactivity**: Smooth animations when generating numbers, hover effects, and a "Generate" button with a glow effect.
+- **Contact Form**: Integrated Formspree for user feedback and inquiries.
+- **Navigation Bar**: A clean, modern navigation bar with links to the generator and contact section.
 - **Responsive**: Adapts to mobile and desktop using container queries and flexbox.
 
 ## Current Plan & Steps
-1.  **Update `index.html`**: Set up the basic structure and link files.
-2.  **Update `style.css`**: Implement modern CSS (Baseline features) including variables, `oklch`, and layout.
-3.  **Update `main.js`**: Implement the `LottoBall` Web Component and the generation logic.
-4.  **Verification**: Ensure no console errors and responsive behavior.
+1.  **Update `index.html`**: Add a `<nav>` bar at the top of the container.
+2.  **Update `style.css`**: Style the navigation bar with modern aesthetics.
+3.  **Verification**: Confirm the UI looks consistent and the contact form logic is intact.
+4.  **Deployment**: Commit and push all final changes to the GitHub repository.

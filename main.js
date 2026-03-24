@@ -96,3 +96,48 @@ function updateUI() {
 }
 
 generateBtn.addEventListener('click', updateUI);
+
+// Formspree Contact Form Logic
+const contactForm = document.getElementById('contact-form');
+const status = document.getElementById('form-status');
+
+async function handleSubmit(event) {
+  event.preventDefault();
+  const data = new FormData(event.target);
+  
+  const submitBtn = contactForm.querySelector('#submit-btn');
+  submitBtn.disabled = true;
+  submitBtn.textContent = '보내는 중...';
+
+  try {
+    const response = await fetch(event.target.action, {
+      method: contactForm.method,
+      body: data,
+      headers: {
+        'Accept': 'application/json'
+      }
+    });
+
+    if (response.ok) {
+      status.innerHTML = "메시지가 성공적으로 전송되었습니다! 감사합니다.";
+      status.className = "form-status success";
+      contactForm.reset();
+    } else {
+      const result = await response.json();
+      if (Object.hasOwn(result, 'errors')) {
+        status.innerHTML = result.errors.map(error => error.message).join(", ");
+      } else {
+        status.innerHTML = "죄송합니다. 메시지 전송 중 오류가 발생했습니다.";
+      }
+      status.className = "form-status error";
+    }
+  } catch (error) {
+    status.innerHTML = "네트워크 오류가 발생했습니다. 나중에 다시 시도해주세요.";
+    status.className = "form-status error";
+  } finally {
+    submitBtn.disabled = false;
+    submitBtn.textContent = '보내기';
+  }
+}
+
+contactForm.addEventListener("submit", handleSubmit);
