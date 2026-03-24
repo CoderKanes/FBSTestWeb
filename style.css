@@ -1,1 +1,127 @@
-/* Add styles here */
+@layer base, layout, components, utilities;
+
+@layer base {
+  :root {
+    --bg-color: oklch(98% 0.01 240);
+    --text-color: oklch(20% 0.02 240);
+    --accent-color: oklch(65% 0.2 280);
+    --surface-color: oklch(100% 0 0);
+    --shadow-color: oklch(0% 0 0 / 10%);
+    --font-family: 'Pretendard', system-ui, sans-serif;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: var(--font-family);
+    min-height: 100dvh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden;
+  }
+}
+
+@layer layout {
+  .background-texture {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: 0.4;
+    background-image: radial-gradient(var(--accent-color) 0.5px, transparent 0.5px);
+    background-size: 24px 24px;
+    filter: contrast(120%) brightness(110%);
+  }
+
+  .app-container {
+    width: 90%;
+    max-width: 600px;
+    background: var(--surface-color);
+    padding: 3rem 2rem;
+    border-radius: 2rem;
+    box-shadow: 0 20px 50px var(--shadow-color);
+    text-align: center;
+    container-type: inline-size;
+  }
+
+  .app-header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+  }
+
+  .accent {
+    color: var(--accent-color);
+    text-shadow: 0 0 20px oklch(65% 0.2 280 / 30%);
+  }
+
+  .app-header p {
+    color: oklch(50% 0.02 240);
+    margin-bottom: 3rem;
+  }
+}
+
+@layer components {
+  .generator-section {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    align-items: center;
+  }
+
+  .ball-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    min-height: 80px;
+  }
+
+  .placeholder {
+    color: oklch(70% 0.02 240);
+    font-style: italic;
+  }
+
+  .generate-btn {
+    appearance: none;
+    border: none;
+    background: var(--accent-color);
+    color: white;
+    padding: 1.2rem 3rem;
+    font-size: 1.2rem;
+    font-weight: 700;
+    border-radius: 100px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 10px 30px oklch(65% 0.2 280 / 40%);
+  }
+
+  .generate-btn:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 15px 40px oklch(65% 0.2 280 / 60%);
+  }
+
+  .generate-btn:active {
+    transform: translateY(0) scale(0.98);
+  }
+}
+
+@layer utilities {
+  @container (max-width: 400px) {
+    .app-header h1 {
+      font-size: 2rem;
+    }
+    .ball-container {
+      gap: 0.5rem;
+    }
+  }
+}

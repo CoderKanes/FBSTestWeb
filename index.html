@@ -1,14 +1,34 @@
 <!doctype html>
-<html lang="en">
+<html lang="ko">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hello World</title>
+  <title>Lotto Number Generator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;700&display=swap" rel="stylesheet">
   <link href='/style.css' rel='stylesheet'>
 </head>
 <body>
-  <h1>Hello, world!</h1>
-  <button onclick="console.log('hello');">Press me</button>
-  <script defer type="text/javascript" src="/main.js"></script>
+  <div class="background-texture"></div>
+  <main class="app-container">
+    <header class="app-header">
+      <h1>오늘의 <span class="accent">로또</span> 번호</h1>
+      <p>행운의 번호를 생성해 보세요!</p>
+    </header>
+
+    <section class="generator-section">
+      <div id="ball-container" class="ball-container">
+        <!-- Lotto balls will be generated here -->
+        <div class="placeholder">버튼을 눌러 번호를 생성하세요</div>
+      </div>
+      <button id="generate-btn" class="generate-btn">번호 생성하기</button>
+    </section>
+
+    <footer class="app-footer">
+      <p>&copy; 2026 Lotto Generator. All rights reserved.</p>
+    </footer>
+  </main>
+  <script type="module" src="/main.js"></script>
 </body>
 </html>
