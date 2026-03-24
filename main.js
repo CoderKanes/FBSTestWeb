@@ -64,7 +64,14 @@ function generateLottoNumbers() {
 }
 
 function updateUI() {
+  if (generateBtn.disabled) return;
+  
   const numbers = generateLottoNumbers();
+  
+  // Disable button during animation
+  generateBtn.disabled = true;
+  generateBtn.style.opacity = '0.5';
+  generateBtn.style.cursor = 'not-allowed';
   
   // Clear container
   ballContainer.innerHTML = '';
@@ -75,6 +82,15 @@ function updateUI() {
       const ball = document.createElement('lotto-ball');
       ball.setAttribute('number', num);
       ballContainer.appendChild(ball);
+      
+      // Re-enable button after last ball is added
+      if (index === numbers.length - 1) {
+        setTimeout(() => {
+          generateBtn.disabled = false;
+          generateBtn.style.opacity = '1';
+          generateBtn.style.cursor = 'pointer';
+        }, 300); // Wait for the last ball's pop-in animation
+      }
     }, index * 100);
   });
 }
